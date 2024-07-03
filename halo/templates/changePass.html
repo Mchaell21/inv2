@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<title>Registration Form</title>
+</head>
+<body>
+	<div class="container mt-5">
+		<!-- Registration form -->
+		<form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+			{% csrf_token %} <!-- CSRF token for security -->
+
+			<!-- Registration form heading -->
+			<h1 style="text-align: center;"><span style="color: green;">Forgot Password</span></h1>
+			<hr>
+
+			<!-- Display error/success messages -->
+			{% if messages %}
+			<div class="alert alert-primary" role="alert">
+				{% for message in messages %}
+				{{ message }}
+				{% endfor %}
+			</div>
+			{% endif %}
+
+			<!-- Username input field -->
+			<div class="form-group">
+				<label for="exampleInputEmail1">Username</label>
+				<input type="text" class="form-control" name="username" id="exampleInputEmail1"
+					aria-describedby="emailHelp" placeholder="Enter username" required>
+			</div>
+
+            <p>Already have an account <a href="{% url 'main' %}">Login</a> </p>
+			<!-- Submit button -->
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+</body>
+</html>
